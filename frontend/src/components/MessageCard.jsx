@@ -1,4 +1,11 @@
+import useUserStore from "../store/useUserStore"
+import { api } from "../api/api"
+
 const MessageCard = ({ likes, content, username, createdAt }) => {
+    const {session} = useUserStore()
+    const handleDelete = async () => {
+    await api.deleteMessage(id) }
+
     return (
         <div className="message-card">
             <div className="message-content">{content}</div>
@@ -7,7 +14,7 @@ const MessageCard = ({ likes, content, username, createdAt }) => {
                 <span className="message-time">{createdAt}</span>
             </div>
             <div className="message-actions">
-                <button className="action-button">
+                <button onClick={handleLike} className="action-button">
                     <span>{likes} 💗🤍</span>
                     <span>Нравится</span>
                 </button>
